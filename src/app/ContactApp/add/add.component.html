@@ -1,0 +1,53 @@
+<form [formGroup] = "ContactForm">
+    <div class="col-md-12">
+      <h3 class="mb-3 text-center">Create Contact</h3>
+    </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text"  formControlName="FirstName" class="form-control" placeholder="First Name">
+      </div>
+      <div *ngIf="isSubmitted&&form.FirstName.errors" class="text-danger">    
+        <p *ngIf="form.FirstName.errors.required">Please enter first name.</p>    
+      </div> 
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" formControlName="LastName" class="form-control" placeholder="Last Name">
+      </div>
+      <div *ngIf="isSubmitted&&form.LastName.errors" class="text-danger">    
+        <p *ngIf="form.LastName.errors.required">Please enter last name.</p>    
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email Id</label>  
+        <input type="text" formControlName="EmailId" class="form-control" placeholder="Email">
+      </div>
+      <div *ngIf="isSubmitted&&form.EmailId.errors" class="text-danger">    
+        <p *ngIf="form.EmailId.errors.required">Please enter Email Id.</p>    
+        <p *ngIf="form.EmailId.errors.email">Please enter valid Email Id.</p>    
+      </div>
+      
+  
+      <div class="form-group">
+        <label for="exampleInputEmail1">Phone Number</label>
+        <input type="text" formControlName="PhoneNumber" class="form-control" placeholder="Phone">
+      </div>
+      <div *ngIf="isSubmitted&&form.PhoneNumber.errors" class="text-danger">    
+        <p *ngIf="form.PhoneNumber.errors.required">Please enter phone number.</p>    
+      </div>
+  
+      <div class="form-group">
+        <label for="exampleInputEmail1">Status</label>
+        <input type="checkbox" formControlName="Status" >
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" [disabled]="IsButtonDisable" (click)="addContact()" style='margin-right:16px'>{{ButtonName}}</button>
+        <button class="btn btn-outline-primary btn-lg btn-block" routerLink="/List">Go to Contacts</button>
+        <div *ngIf="msg" class="text-danger">    
+            {{msg}}
+          </div>
+      </div>
+    
+  <!-- </div> -->
+</form>
